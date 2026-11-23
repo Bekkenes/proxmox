@@ -9,7 +9,7 @@ This is a simple Bash script that searches through your Proxmox logs (or any aut
   - **Yellow:** Displays informational messages and summary counts.
   - **Green:** Indicates success messages.
 - **Flexible Log File Location:**  
-  By default, the script checks `/var/log/auth.log`. You can modify the `LOG_FILE` variable if your logs are located elsewhere.
+  By default, the script checks `/var/log/auth.log`. Proxmox VE 8 and newer only log to the systemd journal, so when that file is missing the script reads the journal for the last 7 days instead. Override with `LOG_FILE=/path ./check_failed_logins.sh` or `SINCE="1 day ago" ./check_failed_logins.sh`.
 - **Human-Readable Format:**  
   The script prints each failed login entry in an easy-to-read format and provides a summary of the total number of failures.
 - **Copy-Paste Friendly:**  
